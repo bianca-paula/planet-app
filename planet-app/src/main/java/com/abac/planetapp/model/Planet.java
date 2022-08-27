@@ -12,13 +12,13 @@ public class Planet implements Serializable {
     private String name;
     private String image;
     private String status;
-    private String crew;
-
+    @ManyToOne
+    private Crew crew;
 
     public Planet() {
     }
 
-    public Planet(Long id, String name, String image, String status, String crew) {
+    public Planet(Long id, String name, String image, String status, Crew crew) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -58,11 +58,11 @@ public class Planet implements Serializable {
         this.status = status;
     }
 
-    public String getCrew() {
+    public Crew getCrew() {
         return crew;
     }
 
-    public void setCrew(String crew) {
+    public void setCrew(Crew crew) {
         this.crew = crew;
     }
 
