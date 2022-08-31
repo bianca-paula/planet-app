@@ -17,8 +17,9 @@ public class PlanetService {
         this.planetRepository = planetRepository;
     }
 
-    public Planet addPlanet(Planet planet){
+    public Planet addPlanet(Planet planet) throws Exception {
         return planetRepository.save(planet);
+
     }
 
     public List<Planet> findAllPlanets(){
