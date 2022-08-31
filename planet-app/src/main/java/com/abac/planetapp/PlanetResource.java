@@ -13,6 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/planet")
@@ -63,17 +64,18 @@ public class PlanetResource {
     }
 
     @PostMapping("/authenticate")
-    public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+    public ResponseEntity<String> generateToken(@RequestBody AuthRequest authRequest) throws Exception {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword())
-
             );
+//            return jwtUtil.generateToken(authRequest.getUserName());
+            return new ResponseEntity<>(jwtUtil.generateToken(authRequest.getUserName()), HttpStatus.OK);
         }
         catch (Exception exception){
-            throw new Exception("Invalid username/password!");
+            System.out.println(exception.getMessage());
+            return new ResponseEntity<>("Invalid credentials",HttpStatus.UNAUTHORIZED);
         }
-        return jwtUtil.generateToken(authRequest.getUserName());
 
     }
 
