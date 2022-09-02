@@ -8,6 +8,5 @@ import java.util.Optional;
 public interface PlanetRepository extends JpaRepository<Planet, Long> {
 
     void deletePlanetById(Long id);
-
     Optional<Planet> findPlanetById(Long id);
 }

@@ -3,6 +3,7 @@ package com.abac.planetapp.model;
 import org.springframework.data.domain.Page;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
@@ -18,6 +19,10 @@ public class Crew implements Serializable {
     private List<Robot> robots;
 
     public Crew() {
+    }
+
+    public Crew(Long id) {
+        this.id = id;
     }
 
     public Crew(Long id, String captain) {
