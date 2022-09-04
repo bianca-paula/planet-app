@@ -1,0 +1,25 @@
+@media only screen and (max-width: 700px) {
+    .modal-edit-planet {
+       width:100% !important;
+       position:relative!important;
+       left:0 !important;
+    }
+}
+  
+.mat-form-field {
+    width: 100% !important;
+    margin-bottom: 5px;
+}
+  
+mat-toolbar-row{
+    background-color: #98353c;
+}
+
+.button-size{
+    width: 12vw !important;
+}
+
+.button-theme-color{
+    background-color: #98353c;
+    color:white;
+}

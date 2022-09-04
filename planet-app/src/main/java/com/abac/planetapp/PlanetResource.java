@@ -1,5 +1,6 @@
 package com.abac.planetapp;
 
+
 import com.abac.planetapp.model.AuthRequest;
 import com.abac.planetapp.model.Crew;
 import com.abac.planetapp.model.Planet;
@@ -13,6 +14,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Collections;
 import java.util.HashMap;
@@ -20,11 +22,22 @@ import java.util.List;
 import java.util.Optional;
 
 
-
+@CrossOrigin(origins = "**", allowedHeaders = "*")
 @RestController
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
+//@CrossOrigin
 @RequestMapping("/planet")
 public class PlanetResource {
     private final PlanetService planetService;
+
+//    @RequestMapping(value= "/**", method=RequestMethod.OPTIONS)
+//    public void corsHeaders(HttpServletResponse response) {
+//        response.addHeader("Access-Control-Allow-Origin", "*");
+//        response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//        response.addHeader("Access-Control-Allow-Headers", "origin, content-type, accept, x-requested-with");
+//        response.addHeader("Access-Control-Max-Age", "3600");
+//    }
+
 //    @Autowired
 //    private JwtUtil jwtUtil;
 //    @Autowired
@@ -33,11 +46,13 @@ public class PlanetResource {
         this.planetService = planetService;
     }
 
+    @CrossOrigin(origins = "**", allowedHeaders = "*")
     @GetMapping("/all")
     public ResponseEntity<List<Planet>> getAllPlanets() {
         List<Planet> planets = planetService.findAllPlanets();
         return new ResponseEntity<>(planets, HttpStatus.OK);
     }
+
 
     @GetMapping("/getcrews")
     public ResponseEntity<Crew> getPlanetCrew(){

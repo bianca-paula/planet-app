@@ -1,0 +1,61 @@
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+.max-image-size{
+    max-width: 15vw;
+    max-height: 15vw;
+}
+
+.red_status{
+    color:red;
+}
+
+.green_status{
+    color:green;
+}
+
+.gray_status{
+    color:gray;
+}
+
+.blue_status{
+    color:blue;
+}
+
+ html, body{
+
+    overflow-x: hidden;
+  } 
+
+.large-font-size{
+    font-size: 3vw;
+  }
+  
+  
+  .medium-font-size{
+    font-size: 2.2vw;
+  }
+  
+  .small-font-size{
+    font-size: 1.8vw;
+  }
+
+  .page-header{
+    height: 20%;
+    background-color: #a65b65;
+    width: 100%;
+  }
+
+  .add-planet-btn{
+    height: 8vh;
+    width: 10vw;
+    border-radius:10px;
+    border:none;
+    background-color: black;
+  }
+  .add-planet-btn:hover {
+    background-color: rgb(61, 61, 61);
+    transition: 0.3s;
+}

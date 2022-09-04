@@ -20,6 +20,11 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -31,6 +36,9 @@ public class SecurityConfig{
 
     @Autowired
     private JwtFilter jwtFilter;
+
+//    @Autowired
+//    private CorsFilter corsFilter;
 
 //    @Bean
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
@@ -48,12 +56,37 @@ public class SecurityConfig{
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/planet").allowedOrigins("http://localhost:4200");
+//            }
+//        };
+//    }
+
+//    @Bean
+//    public CorsFilter corsFilter() {
+//        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        final CorsConfiguration config = new CorsConfiguration();
+//        config.addAllowedOrigin("*");
+//        config.addAllowedHeader("*");
+//        config.addAllowedMethod("*");
+//        source.registerCorsConfiguration("/**", config);
+//        return new CorsFilter(source);
+//    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+
+//        http.cors().disable();
         http.csrf().disable().authorizeRequests().antMatchers("/authenticate").permitAll().anyRequest().authenticated()
                 .and().exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+//        http.addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 }

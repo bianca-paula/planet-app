@@ -1,0 +1,59 @@
+<div class="modal-add-planet">
+	<mat-toolbar class="mat-elevation-z1 mb-4">
+		<mat-toolbar-row class="text-light">
+			<span>Add A New Planet</span>
+		</mat-toolbar-row>
+	</mat-toolbar>
+	<form [formGroup]="AddForm" (ngSubmit)="onAdd()">
+    <mat-form-field>
+      <input type="text" formControlName="name" matInput placeholder="Planet name"/>
+      <mat-error>This field is mandatory.</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select formControlName="status" placeholder="Status">
+        <ng-container>
+          <mat-option value="OK">OK</mat-option>
+          <mat-option value="!OK">!OK</mat-option>
+          <mat-option value="TODO">TODO</mat-option>
+          <mat-option value="En route">En route</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Image</mat-label>
+      <textarea formControlName="image" matInput placeholder="Url of the image"></textarea>
+      <!-- <input type="text" formControlName="image" matInput placeholder="URL address of the image" /> -->
+      <mat-error>This field is mandatory.</mat-error>
+    </mat-form-field>
+
+    <!-- <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Image</mat-label>
+      <textarea formControlName="image" matInput placeholder="Url of the image"></textarea>
+    <input type="text" readonly formControlName="image" matInput placeholder="URL address of the image" />
+  </mat-form-field> -->
+    <br>
+
+    <mat-form-field>
+      <mat-select formControlName="crew" placeholder="Crew">
+        <ng-container>
+          <mat-option *ngFor="let crew of crews" [value]="crew.id" >{{crew.id}} - captain: {{crew.captain}}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <div class="button-row row mt-3">
+      <br>
+      <div class="col-4 d-flex justify-content-center">
+        <button mat-raised-button (click)="onCancel()" class="button py-1 h6 resize-button text-center button-size" type="button">Cancel</button>
+      </div>
+      <div class="col-4"></div>
+      <div class="col-4 d-flex justify-content-center">
+        <button mat-raised-button type="submit" [disabled]="AddForm.invalid" class="button py-1 h6 resize-button text-center button-size button-theme-color">Add</button>
+
+      </div>
+    </div>
+	</form>
+</div>

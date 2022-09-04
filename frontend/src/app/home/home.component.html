@@ -1,0 +1,33 @@
+<div class="page-header" id="page-header">
+    <div class="title justify-content-center">
+      <h2 class="text-center text-light pt-4">XPAND</h2>
+    </div>
+    <button type="button" class="btn btn-primary btn-floating add-planet-btn mx-3" (click)="onOpenAddModal()">
+        ADD PLANET
+      </button>
+  </div>
+
+<div *ngFor="let planet of planets">
+    <div class="card" (click)="onOpenEditModal(planet)">
+        <div class="card-horizontal ">
+            <div class="img-square-wrapper d-flex align-items-center justify-content-center">
+                <img class="img-fluid max-image-size" src="{{planet.image}}" alt="Card image cap">
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                        <h4 class="card-title">{{planet?.name}}</h4>
+                        <p class="card-text">by Captain {{planet?.crew.captain}}</p>
+                    </div>
+                    <div class="col-2 d-flex align-items-center justify-content-center">
+                        <p class="h3 text-center" [ngClass]="{'green_status': planet.status === 'OK',
+                        'red_status': planet.status === '!OK',
+                        'blue_status': planet.status === 'TODO',
+                        'gray_status': planet.status === 'En route'}">{{planet?.status}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
