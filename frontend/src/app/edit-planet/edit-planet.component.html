@@ -15,7 +15,6 @@
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Image</mat-label>
         <textarea formControlName="image" matInput placeholder="Url of the image"></textarea>
-      <!-- <input type="text" readonly formControlName="image" matInput placeholder="URL address of the image" /> -->
     </mat-form-field>
     <br>
     <mat-form-field>
@@ -36,9 +35,7 @@
           </ng-container>
         </mat-select>
       </mat-form-field>
-
       <br>
-
       <div class="button-row row mt-3">
         <br>
         <div class="col-4 d-flex justify-content-center">
@@ -47,15 +44,7 @@
         <div class="col-4"></div>
         <div class="col-4 d-flex justify-content-center">
           <button mat-raised-button type="submit" [disabled]="EditForm.invalid" class="button py-1 h6 resize-button text-center button-size button-theme-color">Save</button>
-  
         </div>
       </div>
-
-
-    <!-- <div class="button-row">
-      <br>
-      <button mat-raised-button (click)="onCancel()" class="button py-1 float-start h6 resize-button text-center button-size">Cancel</button>
-      <button mat-raised-button type="submit" [disabled]="EditForm.invalid" class="button py-1 float-end h6 resize-button text-center button-size">Add</button>
-    </div> -->
 	</form>
 </div>

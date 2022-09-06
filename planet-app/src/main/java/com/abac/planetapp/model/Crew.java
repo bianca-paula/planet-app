@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import javax.persistence.*;
 import java.awt.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -30,6 +31,7 @@ public class Crew implements Serializable {
         this.captain = captain;
     }
 
+
     public Long getId() {
         return id;
     }
@@ -45,4 +47,16 @@ public class Crew implements Serializable {
     public void setCaptain(String captain) {
         this.captain = captain;
     }
+
+    public String getRobots() {
+        if(robots != null) {
+            return robots.toString();
+        }
+        return "";
+    }
+
+    public void setRobots(List<Robot> robots) {
+        this.robots = robots;
+    }
+
 }

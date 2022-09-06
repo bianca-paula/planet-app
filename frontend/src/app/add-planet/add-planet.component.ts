@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Crew } from '../models/Crew';
 import { Planet } from '../models/Planet';
-import { RestapiService } from '../restapi.service';
+import { RestapiService } from '../service/restapi.service';
 
 @Component({
   selector: 'app-add-planet',
@@ -59,7 +59,7 @@ export class AddPlanetComponent implements OnInit {
           alert("Planet was added successfully!");
         },
         (error: HttpErrorResponse) =>{
-          alert(error.message);
+          alert("There was a problem adding the planet!");
         }
   
       );

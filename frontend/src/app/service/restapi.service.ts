@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Crew } from './models/Crew';
-import { Planet } from './models/Planet';
+import { Crew } from '../models/Crew';
+import { Planet } from '../models/Planet';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,6 @@ export class RestapiService {
   }
 
   public login(username : string, password: string){
-    // const headers = new HttpHeaders({Authorization: 'Basic '+btoa(username+":"+password)});
-    // return this.http.post("http://localhost:8080/authenticate", {headers, responseType:'text' as 'json'})
-
     let authRequest: any = {
       "userName": username,
       "password": password

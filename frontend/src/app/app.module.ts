@@ -3,10 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { RestapiService } from './restapi.service';
+import { RestapiService } from './service/restapi.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,7 +31,6 @@ import { EditPlanetComponent } from './edit-planet/edit-planet.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticationComponent,
     HomeComponent,
     LoginComponent,
     AddPlanetComponent,

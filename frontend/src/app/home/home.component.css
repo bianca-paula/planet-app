@@ -49,8 +49,8 @@
   }
 
   .add-planet-btn{
-    height: 8vh;
-    width: 10vw;
+    /* height: 10vh;
+    width: 12vw; */
     border-radius:10px;
     border:none;
     background-color: black;

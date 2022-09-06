@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Crew } from '../models/Crew';
 import { Planet } from '../models/Planet';
-import { RestapiService } from '../restapi.service';
+import { RestapiService } from '../service/restapi.service';
 
 @Component({
   selector: 'app-edit-planet',
@@ -60,10 +60,10 @@ export class EditPlanetComponent implements OnInit {
 
       this.planetService.updatePlanet(newPlanet).subscribe(
         (response: Planet) => {
-          alert(response);
+          alert("Planet was updated succesfully!");
         },
         (error: HttpErrorResponse) =>{
-          alert(error.message);
+          alert("There was a problem updating the planet!");
         }
   
       );

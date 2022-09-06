@@ -4,7 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddPlanetComponent } from '../add-planet/add-planet.component';
 import { EditPlanetComponent } from '../edit-planet/edit-planet.component';
 import { Planet } from '../models/Planet';
-import { RestapiService } from '../restapi.service';
+import { RestapiService } from '../service/restapi.service';
 
 @Component({
   selector: 'app-home',
@@ -37,19 +37,23 @@ export class HomeComponent implements OnInit {
     dialogConfig.width = "650px";
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    this.dialog.open(AddPlanetComponent, dialogConfig);
+    this.dialog.open(AddPlanetComponent, dialogConfig).afterClosed().subscribe(()=>{
+      this.getPlanets();
+    });
   }
 
   onOpenEditModal(planet: Planet){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.height = "500px";
+    dialogConfig.height = "550px";
     dialogConfig.width = "650px";
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
       selectedPlanet: planet
     };
-    this.dialog.open(EditPlanetComponent, dialogConfig);
+    this.dialog.open(EditPlanetComponent, dialogConfig).afterClosed().subscribe(()=>{
+      this.getPlanets();
+    });
   }
 
 

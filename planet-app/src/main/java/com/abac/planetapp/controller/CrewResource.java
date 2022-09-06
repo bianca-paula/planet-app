@@ -1,7 +1,8 @@
-package com.abac.planetapp;
+package com.abac.planetapp.controller;
 
 import com.abac.planetapp.model.Crew;
 import com.abac.planetapp.model.Planet;
+import com.abac.planetapp.model.Robot;
 import com.abac.planetapp.service.CrewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,12 @@ public class CrewResource {
     public ResponseEntity<List<Crew>> getAllCrews() {
         List<Crew> crews = crewService.findAllCrews();
         return new ResponseEntity<>(crews, HttpStatus.OK);
+    }
+
+    @GetMapping("/find-robots/{id}")
+    public ResponseEntity<String> getCrewRobots(@PathVariable("id") Long id) {
+        Crew crew = crewService.findCrewById(id);
+        return new ResponseEntity<>(crew.getRobots(), HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")

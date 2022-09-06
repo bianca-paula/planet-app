@@ -1,4 +1,4 @@
-package com.abac.planetapp;
+package com.abac.planetapp.controller;
 
 import com.abac.planetapp.model.AuthRequest;
 import com.abac.planetapp.util.JwtUtil;
